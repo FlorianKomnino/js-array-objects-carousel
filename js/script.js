@@ -39,16 +39,18 @@ let imgesPusher = images.map((imageObject, index) => {
    idList.push(myItemDiv.id);
 
    let myImgElement = document.createElement(`img`);
-   myImgElement.setAttribute('src', `./${img/01.webp}`);
+   myImgElement.setAttribute('src', `./${imageObject.image}`);
    myItemDiv.append(myImgElement);
 
 })
 
-console.log(idList);
+
 
 let myElement = document.getElementById(idList[0]);
 myElement.classList.add('active');
 
+let previousButton = document.querySelector('div.previous.button');
+console.log(previousButton);
 
 
 
