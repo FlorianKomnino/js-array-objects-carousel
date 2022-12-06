@@ -30,7 +30,7 @@ let imageParentElement = document.querySelector('div.carousel-image');
 
 let idList = [];
 
-let imgesPusher = images.map((image, index) => {
+let imgesPusher = images.map((imageObject, index) => {
 
    let myItemDiv = document.createElement(`div`);
    myItemDiv.classList.add('my_carousel-item');
@@ -39,7 +39,7 @@ let imgesPusher = images.map((image, index) => {
    idList.push(myItemDiv.id);
 
    let myImgElement = document.createElement(`img`);
-   myImgElement.setAttribute('src', './img/01.webp');
+   myImgElement.setAttribute('src', `./${img/01.webp}`);
    myItemDiv.append(myImgElement);
 
 })
