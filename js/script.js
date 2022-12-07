@@ -34,16 +34,16 @@ let idList = [];
 
 //$ creo un ciclo per creare gli elementi
 let imgesPusher = images.map((imageObject, index) => {
-   let myItemDiv = document.createElement(`div`);
-   
-   //$ assegnaro la classe my_carousel-item
-   myItemDiv.classList.add('my_carousel-item');
-
+   //$ creo l'elemento myItemDiv
+   //$ assegno la classe my_carousel-item
    //$ appendo myItemDiv al parent
    //$ setto l'attributo id all'elemento
    //$ pusho l'elemento nell'arrey creato in precedenza
+   let myItemDiv = document.createElement(`div`);
+   myItemDiv.classList.add('my_carousel-item');
    imageParentElement.append(myItemDiv);
    myItemDiv.setAttribute('id', `image${index}`);
+   myItemDiv.setAttribute('activeIndex', `${index}`);
    idList.push(myItemDiv.id);
    
    
@@ -56,28 +56,31 @@ let imgesPusher = images.map((imageObject, index) => {
 
 })
 
-
-
-let myElement = document.getElementById(idList[0]);
-myElement.classList.add('active');
-
 let buttonPrevious = document.querySelector('div.button.previous');
 let buttonNext = document.querySelector('div.button.next');
 
-images.forEach ((imageObject) => {
-   imageObject['visible'] = false;
-})
+let visibleImageIndex = 0;
 
+document.getElementsByClassName('my_carousel-item')[visibleImageIndex].classList.add('active');
 
+buttonNext.addEventListener('click', function() {
+   // identifico l'indice nell'array dell'immagine attualmente visibile
+   document.getElementsByClassName('my_carousel-item')[visibleImageIndex].classList.remove('active');
 
+   if (visibleImageIndex >= 4 ) {
+      visibleImageIndex = 0;
+   } else {
+      visibleImageIndex++;
+   }
 
-
-
-console.log(images);
-
-
+   document.getElementsByClassName('my_carousel-item')[visibleImageIndex].classList.add('active');
+});
 
 /*
+   let visibleImage = images.filter((image) => image.visible === true);
+
+
+
 
 let imageParentElement = document.querySelector('div.carousel-image');
 
