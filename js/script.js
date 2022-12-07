@@ -76,6 +76,21 @@ buttonNext.addEventListener('click', function() {
    document.getElementsByClassName('my_carousel-item')[visibleImageIndex].classList.add('active');
 });
 
+
+buttonPrevious.addEventListener('click', function() {
+   // identifico l'indice nell'array dell'immagine attualmente visibile
+   document.getElementsByClassName('my_carousel-item')[visibleImageIndex].classList.remove('active');
+
+   if (visibleImageIndex <= 0 ) {
+      visibleImageIndex = 4;
+   } else {
+      visibleImageIndex--;
+   }
+
+   document.getElementsByClassName('my_carousel-item')[visibleImageIndex].classList.add('active');
+});
+
+
 /*
    let visibleImage = images.filter((image) => image.visible === true);
 
