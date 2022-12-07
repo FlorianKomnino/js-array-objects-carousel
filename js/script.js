@@ -26,18 +26,30 @@ const images = [
    }
 ];
 
+//$ creo una variabile legata all'elemento container dell'immagine principale
 let imageParentElement = document.querySelector('div.carousel-image');
 
+//$ creo un arrey vuoto dove inserire gli id degli elementi che andrò a creare
 let idList = [];
 
+//$ creo un ciclo per creare gli elementi
 let imgesPusher = images.map((imageObject, index) => {
-
    let myItemDiv = document.createElement(`div`);
+   
+   //$ assegnaro la classe my_carousel-item
    myItemDiv.classList.add('my_carousel-item');
+
+   //$ appendo myItemDiv al parent
+   //$ setto l'attributo id all'elemento
+   //$ pusho l'elemento nell'arrey creato in precedenza
    imageParentElement.append(myItemDiv);
    myItemDiv.setAttribute('id', `image${index}`);
    idList.push(myItemDiv.id);
-
+   
+   
+   //$ creo l'elemento img
+   //$ imposto la sorgente dell'immagine con .setAttribute
+   //$ appendo l'elemento creato al myItemDiv creato in precedenza
    let myImgElement = document.createElement(`img`);
    myImgElement.setAttribute('src', `./${imageObject.image}`);
    myItemDiv.append(myImgElement);
@@ -49,9 +61,19 @@ let imgesPusher = images.map((imageObject, index) => {
 let myElement = document.getElementById(idList[0]);
 myElement.classList.add('active');
 
-let previousButton = document.querySelector('div.previous.button');
-console.log(previousButton);
+let buttonPrevious = document.querySelector('div.button.previous');
+let buttonNext = document.querySelector('div.button.next');
 
+images.forEach ((imageObject) => {
+   imageObject['visible'] = false;
+})
+
+
+
+
+
+
+console.log(images);
 
 
 
