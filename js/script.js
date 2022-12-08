@@ -98,31 +98,38 @@ let thumbnailsWrapper = document.createElement(`div`);
 
 
 //$ creo una variabile legata all'elemento container dell'immagine principale
-let imageParentElement = document.querySelector('div.carousel-image');
+let thumbnailsParentElement = document.querySelector('div.carousel-wrapper');
 
 //$ creo un arrey vuoto dove inserire gli id degli elementi che andrò a creare
-let idList = [];
+let idThumbnails = [];
+
+
+let myThumbnailsWrapperDiv = document.createElement(`div`);
+myThumbnailsWrapperDiv.classList.add('myThumbnailsWrapper');
+
+thumbnailsParentElement.append(myThumbnailsWrapperDiv);
+
 
 //$ creo un ciclo per creare gli elementi
-let imgesPusher = images.map((imageObject, index) => {
+let thumbnailsPusher = images.map((imageObject, index) => {
    //$ creo l'elemento myItemDiv
    //$ assegno la classe my_carousel-item
    //$ appendo myItemDiv al parent
    //$ setto l'attributo id all'elemento
    //$ pusho l'elemento nell'arrey creato in precedenza
-   let myItemDiv = document.createElement(`div`);
-   myItemDiv.classList.add('my_carousel-item');
-   imageParentElement.append(myItemDiv);
-   myItemDiv.setAttribute('id', `image${index}`);
-   myItemDiv.setAttribute('activeIndex', `${index}`);
-   idList.push(myItemDiv.id);
+   let myThumbnailDiv = document.createElement(`div`);
+   myThumbnailDiv.classList.add('singleThumbnail');
+   myThumbnailsWrapperDiv.append(myThumbnailDiv);
+   myThumbnailDiv.setAttribute('id', `thumbnail${index}`);
+   myThumbnailDiv.setAttribute('thumbnailsActiveIndex', `${index}`);
+   idThumbnails.push(myThumbnailDiv.id);
    
    
    //$ creo l'elemento img
    //$ imposto la sorgente dell'immagine con .setAttribute
    //$ appendo l'elemento creato al myItemDiv creato in precedenza
-   let myImgElement = document.createElement(`img`);
-   myImgElement.setAttribute('src', `./${imageObject.image}`);
-   myItemDiv.append(myImgElement);
+   let myImgThumbnailElement = document.createElement(`img`);
+   myImgThumbnailElement.setAttribute('src', `./${imageObject.image}`);
+   myThumbnailDiv.append(myImgThumbnailElement);
 
 })
