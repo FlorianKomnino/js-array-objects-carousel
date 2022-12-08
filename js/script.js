@@ -91,24 +91,38 @@ buttonPrevious.addEventListener('click', function() {
 });
 
 
-/*
-   let visibleImage = images.filter((image) => image.visible === true);
+
+let thumbnailsWrapper = document.createElement(`div`);
 
 
 
 
+//$ creo una variabile legata all'elemento container dell'immagine principale
 let imageParentElement = document.querySelector('div.carousel-image');
 
-let imgesPusher = images.map((image) => {
+//$ creo un arrey vuoto dove inserire gli id degli elementi che andrò a creare
+let idList = [];
 
-let myItemDiv = document.createElement(`div`);
-myItemDiv.classList.add('my_carousel-item', 'active');
-imageParentElement.append(myItemDiv);
+//$ creo un ciclo per creare gli elementi
+let imgesPusher = images.map((imageObject, index) => {
+   //$ creo l'elemento myItemDiv
+   //$ assegno la classe my_carousel-item
+   //$ appendo myItemDiv al parent
+   //$ setto l'attributo id all'elemento
+   //$ pusho l'elemento nell'arrey creato in precedenza
+   let myItemDiv = document.createElement(`div`);
+   myItemDiv.classList.add('my_carousel-item');
+   imageParentElement.append(myItemDiv);
+   myItemDiv.setAttribute('id', `image${index}`);
+   myItemDiv.setAttribute('activeIndex', `${index}`);
+   idList.push(myItemDiv.id);
+   
+   
+   //$ creo l'elemento img
+   //$ imposto la sorgente dell'immagine con .setAttribute
+   //$ appendo l'elemento creato al myItemDiv creato in precedenza
+   let myImgElement = document.createElement(`img`);
+   myImgElement.setAttribute('src', `./${imageObject.image}`);
+   myItemDiv.append(myImgElement);
 
 })
-
-
-let myImgElement = document.createElement(`img`);
-myImgElement.setAttribute('src', './img/01.webp');
-myItemDiv.append(myImgElement);
-*/
